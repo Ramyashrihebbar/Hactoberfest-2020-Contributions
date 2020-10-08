@@ -1,0 +1,118 @@
+C:
+
+#include<stdio.h> 
+int main()
+{
+    //1 Create two variables to use in first and second numbers
+      int i;
+      int f_Num,s_Num;
+    //2 two more variables created to store the sum of the divisors 
+      int f_DivisorSum = 0;
+      int s_DivisorSum = 0;
+
+    //3 Asking user to enter the two numbers
+       printf("Enter two numbers to check if Amicable or not : ");
+       scanf("%d %d",&f_Num,&s_Num);
+       
+    //4 Using one variable for loop and second to check for each number
+      for(int i=1;i<f_Num;i++)
+      {
+           //5 Condition check
+           if(f_Num % i == 0)
+               f_DivisorSum = f_DivisorSum + i;
+      }
+      //6 Calculating the sum of all divisors
+     for(int i=1;i<s_Num;i++)
+     {
+          if(s_Num % i == 0)
+              s_DivisorSum = s_DivisorSum + i;
+     }
+     //7 Check condition for friendly numbers
+     if((f_Num == s_DivisorSum) && (s_Num == f_DivisorSum))
+   
+     else
+     { 
+         printf("%d and %d are not Amicable numbers\n",f_Num,s_Num);
+     }
+    return 0;
+}
+
+C++:
+
+#include<iostream>
+using namespace std;
+// function to check Friendly pairs
+void findAmicable(int first, int second)
+{
+	int sum1=0,sum2=0;
+	for(int i=1; i<=first/2 ; i++)
+	{
+		//finding and adding divisors of first number
+		if(first%i==0)
+			sum1=sum1+i;
+	}
+	for(int i=1; i<=second/2 ; i++)
+	{
+		//finding and adding divisors of second number
+		if(second%i==0)
+			sum2=sum2+i;
+	}
+	//ckecking for friendly pair
+	if(first==sum2 && second==sum1)
+		cout<<"Fiendly Pair("<<first<<","<<second<<")";
+	else
+		cout<<"Not a Fiendly Pair";
+}
+//main program
+int main()
+{
+	int first,second;
+	cout<<"Enter first number : ";
+	//user input
+	cin>>first;
+	cout<<"Enter second number : ";
+	//user input
+	cin>>second;
+	//calling function
+	findAmicable(first,second);
+	return 0;
+}
+
+JAVA:
+
+//Java program to check whether a number is friendly pair or not
+import java.util.Scanner;
+public class friendly_pair_or_not
+{
+	public static void main(String[] args)
+	{
+		//scanner class declaration
+		Scanner sc = new Scanner(System.in);
+		//input from user
+		System.out.print("Enter First number : ");				
+		int number1 = sc.nextInt();
+		System.out.print("Enter Second number : ");				
+		int number2 = sc.nextInt();
+		//declare two variables to store the addition of factors of both numbers which are entered by user 
+		int add1 = 0, add2 = 0;
+		//logic for finding factors and calculating sum of all those factors for number1
+		for(int i = 1 ; i < number1 ; i++)
+		{
+			if(number1 % i == 0)
+				add1 = add1 + i;
+		}
+		//logic for finding factors and calculating sum of all those factors for number2
+		for(int i = 1 ; i < number2 ; i++)
+		{
+			if(number2 % i == 0)
+				add2 = add2 + i;
+		}
+		//condition for friendly pair number
+		if(number1 == add2 && number2 == add1)
+			System.out.println("Number is Friendly Pair");
+		else
+			System.out.println("Number is not Friendly Pair");
+		//closing scanner class(not compulsory, but good practice)
+		sc.close();													
+	}
+}
